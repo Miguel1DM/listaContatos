@@ -13,7 +13,8 @@
 >> npm run start
 >## Rotas
 >
->## Desenvolvido por
->- Rafael Novais
->- João Campos
+>>## Desenvolvido por
+>- [Rafael Novais](https://github.com/oN0V41S)
+>- [João Campos](https://github.com/JoaoCamposDev)
 >- [Miguel Pereira](https://github.com/Miguel1DM)
+>- [Vincícius Castro](https://github.com/Vinecastro)
