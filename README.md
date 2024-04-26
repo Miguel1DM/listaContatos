@@ -5,4 +5,4 @@
 >>- [phpMyAdmin](https://www.phpmyadmin.net/) Adminstrador de Banco
 >
 >## Criar Banco de dados
->Abra o [phpMyAdmin](https://www.phpmyadmin.net/), 
+>Abra o [phpAdmin Dashboard](http://localhost/phpmyadmin/), e então abra a seção "sql", e cole as instruções localizadas no arquivo [instruções para criar DB "listacontatos"](./sqlBdContatos.sql), execute a instrução e seu banco de dados estará pronto para ser utilizado.
