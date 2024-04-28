@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-//const fs = require('fs');
+const fs = require('fs');
 
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -7,10 +7,10 @@ const connection = mysql.createConnection({
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
     port: 3306,
-    // ssl: {
-    //     // Habilita o uso de SSL/TLS
-    //     rejectUnauthorized: true // Rejeita conexões não autorizadas
-    //   }
+    ssl: {
+        // Habilita o uso de SSL/TLS
+        rejectUnauthorized: true // Rejeita conexões não autorizadas
+      }
 });
 
 connection.connect((error)=>{

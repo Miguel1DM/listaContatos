@@ -1,7 +1,11 @@
 const usuarioServices = require('../services/usuarioServices');
+const emailServices = require('../services/emailServices');
 require('dotenv').config({ path: 'variaveis.env' });
-const jwt = require('jsonwebtoken')
-const db = require('../../db')
+const jwt = require('jsonwebtoken');
+
+function gerarCodigoVerificacao() {
+    return Math.floor(10000 + Math.random() * 90000).toString();
+}
 
 module.exports = {
     inserir: async (req, res) =>{
@@ -11,6 +15,8 @@ module.exports = {
             result: []
         }
 
+        let codigoVerificacao = gerarCodigoVerificacao();
+
         try{
 
         let nome = req.body.nome;
@@ -18,14 +24,20 @@ module.exports = {
         let senha = req.body.senha;
 
             if(nome && email && senha){
-                await usuarioServices.inserir(nome, email, senha)
+
+
+                await usuarioServices.inserir(nome, email, senha, (false), codigoVerificacao)
       
-                  json.result.push({
-                      status: "Usuário criado com sucesso",
+                json.result.push({
+                      status: "Cadastro feito",
+                      verificacao: false,
                       nome: req.body.nome,
                       email: req.body.email,
-                  })
-                  res.json(json);
+                })
+
+                emailServices.enviarEmail(email, codigoVerificacao)
+
+                res.json(json);
               }else{
       
                   json.error = 'Algum parâmetro enviado esta errado';
@@ -62,6 +74,14 @@ module.exports = {
                         statusLogin: false,
                     })
                     res.json(json);
+
+                }else if(usuario[0].verificacao == false){
+
+                    json.result.push({
+                        statusLogin: "Email não verificado"
+                    })
+
+                    res.json(json)
 
                 }else{
 
@@ -116,6 +136,39 @@ module.exports = {
                     next();
                 }
             })
+    },
+
+    recuperarSenha: async (req, res,) =>{
+
+        let json = {
+            error: '',
+            result: []
+        }
+
+        try{
+
+            let codigoVerificacao = gerarCodigoVerificacao();
+            let email = req.body.email;
+            let senha = req.body.senha;
+            let codVerificacao = req.body.codigoVerificacao;
+
+            if(email && senha && codVerificacao){
+
+                await usuarioServices.recuperarSenha(senha, email , codVerificacao);
+
+                json.result.push({
+                    status: "Senha alterada com sucesso"
+                })
+
+            }else{
+                json.error = 'Algum parâmetro está faltando';
+            }
+
+            res.json(json);
+        }catch(error){
+            json.error = error;
+            res.json(json);
+        }
     }
 }
 
