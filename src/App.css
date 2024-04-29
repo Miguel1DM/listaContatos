@@ -1,0 +1,78 @@
+.page-container {
+    opacity: 1; /* Define a opacidade inicial */
+    transition: opacity 0.5s ease-in-out; /* Adiciona uma transição suave para a opacidade */
+  }
+  
+  .page-fade-in {
+    opacity: 1; /* Opacidade total para a página */
+  }
+  
+  .page-fade-out {
+    opacity: 0; /* Opacidade zero para a página */
+  }
+
+.titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #2D9CB4;
+    color: white;
+    width: 100vw;
+    border-bottom: 10px double #ffffff;
+}
+
+.formulario {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    height: 100vh;
+}
+
+.formulario input{
+    width: 66vh;
+    padding-left: 15px;
+    font-size: 15px;
+    height: 30px;
+    border-radius: 5px;
+    padding-top: 5px 0px 5px 0px;
+    border: 1px solid #2D9CB4;
+    margin-bottom: 10px;
+}
+
+.mx-2 {
+  display: flex;
+  justify-content: center;
+}
+
+body ul {
+  margin-top: 30px;
+}
+
+@media (max-width: 480px) {
+  .formulario input {
+    width: 80vw;
+  }
+
+  .formulario button {
+    margin-top: 30px;
+    width: 80vw;
+  }
+
+  .mx-2 h4 {
+    font-size: 14px;
+  }
+
+  .mx-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+    height: 80px;
+  }
+
+  body ul {
+    margin-left: -10px;
+    display: flex;
+  }
+
+};
