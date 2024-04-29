@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhoneVolume, faTrashAlt, faUser, faCirclePlus} from "@fortawesome/free-solid-svg-icons"
 import './listacontatos.css'
 
+// Importando Componente de Contato
 import Contato from '../../Componentes/contato/contato'
 
 function ListaContatos(props) {
