@@ -4,3 +4,15 @@
     margin: 10px 0;
     border-radius: 100px;
 }
+
+.formContact{
+    width: 30%;
+    margin: 6vh auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.formContact button{
+    width: 50%;
+    margin: auto;
+}
