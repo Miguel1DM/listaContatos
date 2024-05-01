@@ -1,5 +1,11 @@
+import "./listacontatos.css";
+
+// Importando pacotes
 import { React, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import isLoged from '../../services/isLoged.js'
+
+//Importando Ícones
 import {
   faPhoneVolume,
   faTrashAlt,
@@ -7,20 +13,13 @@ import {
   faCirclePlus,
   faList,
 } from "@fortawesome/free-solid-svg-icons";
-import "./listacontatos.css";
-import jwt from 'json'
-
-// Biblioteca para fazer requisições
-import axios from 'axios'
 
 // Importando Componente de Contato
 import Contato from "../../Componentes/contato/contato";
 
 function ListaContatos(props) {
-  // Busancdo lista de Usuários
-  const idUsuario;
-  const contacts = axios.get(`https://apicontato.onrender.com/contatos/${idUsuario}/`)
-  const [setListaContatos, listaContatos] = useState([]);
+  isLoged()
+  // const [setListaContatos, listaContatos] = useState([]);
 
   // Contato a ser adicionado
   const [contato, setContato] = useState({ id: "", nome: "", telefone: "" });

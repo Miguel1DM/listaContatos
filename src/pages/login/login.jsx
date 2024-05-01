@@ -11,11 +11,10 @@ import imgLogin from '../../img/imgLogin.png';
 import axios from 'axios'
 
 export default function Login() {
+  const navigate = useNavigate();
 
   // Função de Autenticação de Login
   async function AuthLogin(){
-    const navigate = useNavigate();
-
     const email = document.getElementById("inputEmail").value
     const senha = document.getElementById("inputSenha").value
     let res = document.getElementById("res")
@@ -30,6 +29,7 @@ export default function Login() {
         "senha": `${senha}`
       }
   
+      console.log("Realizando login...")
       // Busca o email e senha do usuário na API
       const response = await axios.post("https://apicontato.onrender.com/login",data)
         if(response.status === 200){
