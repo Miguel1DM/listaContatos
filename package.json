@@ -4,7 +4,7 @@
   "description": "api desenvolvida para Sprint do Atila",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/index.js",
+    "start": "nodemon ./src/api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Miguel Pereira",

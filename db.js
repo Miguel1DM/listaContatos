@@ -2,6 +2,9 @@ const mysql = require('mysql');
 const fs = require('fs');
 
 const connection = mysql.createConnection({
+
+    //parâmetros da conexao com o BD, são passados em um arquivo '.env', variáveis de ambiente
+    //por questões de segurança
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
