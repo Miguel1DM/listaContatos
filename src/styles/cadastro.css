@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+body{
+    background-color: rgb(160, 199, 209);
+    width: 100vw;
+}
+
+.fundoCadastro {
+    position: fixed;
+    right: 0;
+    background-color: rgb(255, 255, 255);
+    width: 32vw;
+    height: 100vh;
+    box-shadow: 1px 1px rgb(175, 180, 180);
+}
+
+.fundoCadastro .elementosCadastro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.elementosCadastro h1{
+    margin-top: 38px;
+    font-size: 38px;
+    margin-bottom: -1px;
+    color: #2D9CB4;
+}
+
+.elementosCadastro input{
+    padding-left: 15px;
+    font-size: 15px;
+    height: 30px;
+    width: 40vh;
+    border-radius: 5px;
+    padding-top: 5px 0px 5px 0px;
+    border: 1px solid #2D9CB4;
+}
+
+.elementosCadastro .nome p{
+    margin-bottom: 7px;
+    font-size: 15px;
+}
+
+.elementosCadastro .senha p{
+    margin-bottom: 7px;
+    font-size: 15px;
+}
+
+.elementosCadastro .email p{
+    margin-bottom: 7px;
+    font-size: 15px;
+}
+
+.elementosCadastro .confirmarSenha p{
+    margin-bottom: 7px;
+    font-size: 15px;
+}
+
+.elementosCadastro .confirmarSenha {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.elementosCadastro button{
+    padding: 12px 100px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color:#2D9CB4;
+    font-size: 18px;
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+.elementosCadastro .subtitulo {
+    margin-bottom: 40px;
+}
+
+.elementosCadastro .btnCadastro:hover {
+    background-color: #1d7285;
+    cursor: pointer;
+    box-shadow: 1px 1px rgb(25, 193, 199);
+    transform: translateY(-2px);
+}
+
+.fundoCadastro img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:68%;
+    height: 100vh;
+}
+
+/* Responsividade */
+
+@media (max-width: 480px) {
+    .elementosCadastro h1{
+        margin-top: 80px;
+        font-size: 30px;
+        margin-bottom: -1px;
+        color: #2D9CB4;
+    }
+
+    .fundoCadastro img {
+        width: 0;
+        height: 0;
+    }
+
+    .fundoCadastro {
+        width: 100vh;
+        height: 100vh;
+    }
+
+    .fundoCadastro .elementosCadastro {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        height: auto;
+    }
+
+    .elementosCadastro input {
+        width: 80vw;
+    }
+
+    .elementosCadastro .subtitulo {
+        font-size: 14px;
+    }
+}
