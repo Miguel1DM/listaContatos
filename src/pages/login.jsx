@@ -16,10 +16,7 @@ export default function Login() {
     const email = document.getElementById("inputEmail").value;
     const senha = document.getElementById("inputSenha").value;
 
-    console.log(await AuthUser(email,senha))
-    if(await AuthUser(email,senha) == true){
-      navigate("/listacontatos")
-    }
+    if(await AuthUser(email,senha)){navigate("/listacontatos")}else{window.alert("Erro ao buscar Email e senha.")}
   }
 
   return (

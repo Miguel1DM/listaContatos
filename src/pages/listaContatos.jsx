@@ -15,7 +15,6 @@ import {
 
 // Components
 import Contato from "../Componentes/contato/contato";
-import CheckToken from "../services/checkToken";
 
 export default function ListaContatos(){
   const [contatos, setContatos] = useState([]);
@@ -25,17 +24,16 @@ export default function ListaContatos(){
     const userId = GetId(token);
     const buscarContatos = async () => {
       const url = `https://listacontatos-bicw.onrender.com/contatos/${userId}`;
-      const response = await axios.get(url, {}, {
+      const response = await axios.get(url, {
         headers: {
-          'x-acess-token': userId,
+          "x-access-token": `${token}`,
         }
       });
-      CheckToken(response);
-      setContatos(response);
-    };
-
-    buscarContatos();
+      return response.data.result
+    };    
+    setContatos(buscarContatos())
   }, []);
+
 
   return (
     <div className="mx-2">
@@ -63,9 +61,9 @@ export default function ListaContatos(){
         <button className="btn btn-primary mt-4" ><FontAwesomeIcon icon={faCirclePlus} className="me-2" />Adicionar</button>
       </form>
       <ul>
-      {contatos.map(contato => (
+      {/* {contatos.map(contato => (
           <Contato id={contato.id} nome={contato.nome} numero={contato.numero} email={contato.email}/>
-        ))}
+        ))} */}
       </ul>
     </div>
   );

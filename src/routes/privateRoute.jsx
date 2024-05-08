@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-// Função para navegar páginas com ReactDom
 import { Navigate } from 'react-router-dom';
-import CheckToken from '../services/checkToken';
+import validateToken from '../services/validateToken';
 
 export default function PrivateRoute({children}){
-	// const user = CheckToken()
+	// Validando Token do Usuário para prosseguir na página
 	const user = true;
 
 	// Validar se o token do usuário é válido
