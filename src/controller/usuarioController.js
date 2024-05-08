@@ -202,6 +202,48 @@ module.exports = {
         }
     },
 
+    rotaValidarToken: (req, res) =>{
+
+        let json = {
+            error: '',
+            result: []
+        }
+
+            const token = req.headers['x-access-token']
+            try{
+
+                if(!token){
+                    json.result.push({
+                        status: 'você nao passou o token'
+                    })
+
+                    res.josn(json)
+
+                }
+
+               jwt.verify(token, process.env.SECRET)
+
+              
+                    json.result.push({
+                        status: true
+                    })
+                    res.josn(json)
+                
+            }catch(error){
+
+                if(error.name == "TokenExpiredError"){
+                    json.result.push({
+                        status: "O token expirou"
+                    })
+                }else if (error.name == "JsonWebTokenError"){
+                    json.error = false
+                }
+
+                res.json(json)
+            }
+
+    }
+
     
 }
 
