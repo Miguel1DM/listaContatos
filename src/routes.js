@@ -21,6 +21,6 @@ router.post('/login', usuarioController.login)
 router.post('/recuperarSenha', usuarioController.recuperarSenha)
 
 //Rotas token
-router.post('/validarToken/:idUsuario', usuarioController.rotaValidarToken)
+router.post('/validarToken', usuarioController.rotaValidarToken)
 
 module.exports = router;
