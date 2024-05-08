@@ -14,24 +14,25 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 // Components
-import Contato from "../Componentes/contato/contato";
+import Contato from "../componentes/contato/contato";
 
 export default function ListaContatos(){
   const [contatos, setContatos] = useState([]);
 
   useEffect(() => {
+    const url = process.env.REACT_APP_API;
     const token = localStorage.getItem("token");
     const userId = GetId(token);
     const buscarContatos = async () => {
-      const url = `https://listacontatos-bicw.onrender.com/contatos/${userId}`;
+      const url = `${url}contatos/${userId}`;
       const response = await axios.get(url, {
         headers: {
           "x-access-token": `${token}`,
         }
       });
-      return response.data.result
+      setContatos(response.data.result)
     };    
-    setContatos(buscarContatos())
+    buscarContatos()
   }, []);
 
 

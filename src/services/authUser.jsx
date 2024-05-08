@@ -7,7 +7,9 @@ async function AuthLogin(email,senha){
   // Validando campos a ser inseridos 
   if(!email || !senha){
     return window.alert("Insira o Nome e a Senha do Usuário!!")
-  }else{
+  }
+  else{
+    const url = process.env.REACT_APP_API;
     const data = {
       "email": `${email}`,
       "senha": `${senha}`
@@ -15,7 +17,7 @@ async function AuthLogin(email,senha){
 
     // Busca o email e senha do usuário na API
     window.alert("Realizando Login...");
-    const response = await axios.post("https://listacontatos-bicw.onrender.com/login",data)
+    const response = await axios.post(`${url}login`,data)
       if(response.status === 200){
         const statusLogin = response.data.result[0].statusLogin
         if(statusLogin){
