@@ -128,7 +128,7 @@ module.exports = {
 
     excluir: async (req, res) =>{
 
-        //Json padrao dessa API, ele tem tem os objetos 'error', para restornar os erros da API,
+        //Json padrao dessa API, ele tem tem os objetos 'error', para retornar os erros da API,
         //e o 'result', para retorna os resultados da API
         let json = {
             error:'',

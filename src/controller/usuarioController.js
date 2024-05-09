@@ -121,7 +121,7 @@ module.exports = {
             result: []
         }
 
-            const token = req.headers['x-access-token']
+            const token = req.headers['bearer']
             const idUsuario = req.params.idUsuario
             try{
 
@@ -209,34 +209,40 @@ module.exports = {
             result: []
         }
 
-            const token = req.headers['x-access-token']
+            const token = req.headers['bearer']
             try{
 
                 if(!token){
-                    json.result.push({
-                        status: 'você nao passou o token'
-                    })
+                    json = { 
+                        status: false,
+                        message: 'token nao encontrado'
+                    }
 
-                    res.josn(json)
+                    res.json(json)
 
                 }
 
                jwt.verify(token, process.env.SECRET)
 
-              
-                    json.result.push({
-                        status: true
-                    })
-                    res.josn(json)
+                    json = { 
+                        status: true,
+                        message: 'token validado'
+                    }
+
+                    res.json(json)
                 
             }catch(error){
 
                 if(error.name == "TokenExpiredError"){
-                    json.result.push({
-                        status: "O token expirou"
-                    })
+                    json = { 
+                        status: false,
+                        message: 'token expirou'
+                    }
                 }else if (error.name == "JsonWebTokenError"){
-                    json.error = false
+                    json = { 
+                        status: false,
+                        message: `erro: ${error}`
+                    }
                 }
 
                 res.json(json)
