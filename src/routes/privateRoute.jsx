@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 
 import { Navigate } from 'react-router-dom';
-import validateToken from '../services/validateToken';
 
 export default function PrivateRoute({children}){
 	// Validando Token do Usuário para prosseguir na página

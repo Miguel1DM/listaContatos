@@ -1,4 +1,5 @@
-  
+import React from 'react'
+import { Navigate } from 'react-router-dom';  
 import axios from 'axios'
 
 // Função de Autenticação de Login
@@ -27,7 +28,7 @@ async function AuthLogin(email,senha){
           return true
         }else{
           window.alert("Email ou Senha Incorretos!!")
-          return false
+          return <Navigate to="/"/>
         }
       }else{
         window.alert("Erro ao buscar Usuário.")

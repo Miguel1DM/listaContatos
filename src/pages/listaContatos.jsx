@@ -2,7 +2,7 @@ import "../styles/listacontatos.css";
 
 // Funções
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import GetId from "../services/getId";
 import axios from "axios";
 
@@ -14,26 +14,35 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 // Components
-import Contato from "../componentes/contato/contato";
+// import Contato from "../componentes/contato/contato";
 
 export default function ListaContatos(){
   const [contatos, setContatos] = useState([]);
 
-  useEffect(() => {
-    const url = process.env.REACT_APP_API;
-    const token = localStorage.getItem("token");
-    const userId = GetId(token);
-    const buscarContatos = async () => {
-      const url = `${url}contatos/${userId}`;
-      const response = await axios.get(url, {
-        headers: {
-          "x-access-token": `${token}`,
-        }
-      });
-      setContatos(response.data.result)
-    };    
-    buscarContatos()
-  }, []);
+  // useEffect(() => {
+  //   // Paramêtros da Requisição
+  //   const url = process.env.REACT_APP_API;
+  //   const token = localStorage.getItem("token");
+  //   const userId = GetId(token);
+
+  //   // Função para buscar e salvar Todos contatos
+  //   const buscarContatos = async () => {
+  //     const url = `${url}contatos/${userId}`;
+  //     const response = await axios.get(url, {
+  //       headers: {
+  //         "x-access-token": `${token}`,
+  //       }
+  //     });
+
+  //     // Tratamento do token do Usuário
+  //     if(response.result.status === "você nao passou o token"){ window.alert("Faça login primeiro!!"); <Navigate to="/"/>}
+  //     else if(response.result[0].status === "O token expirou"){ window.alert("Faça login novamente, sua sessão expirou!!"); <Navigate to="/"/>}
+  //     // Salvando Lista de contatos
+  //     else if(response.result != []){setContatos(response.result)}
+  //   };   
+     
+  //   buscarContatos()
+  // }, []);
 
 
   return (

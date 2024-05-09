@@ -1,6 +1,6 @@
 import React from 'react';
-import './cadastro.css';
-import imgLogin from '../../img/imgLogin.png';
+import '../styles/cadastro.css';
+import imgLogin from '../img/imgLogin.png';
 
 function Cadastrar({goToVerificar}){
     return(

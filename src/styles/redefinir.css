@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    background-color: rgb(160, 199, 209);
+}
+
+.fundoRedefinir {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 32vw;
+    height: 100vh;
+    box-shadow: 1px 1px rgb(175, 180, 180);
+}
+
+
+.fundoRedefinir .elementosRedefinir {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.elementosRedefinir h1{
+    margin-top: -50px;
+    font-size: 38px;
+    margin-bottom: -1px;
+    color: #2D9CB4;
+}
+
+.elementosRedefinir input{
+    padding-left: 15px;
+    font-size: 15px;
+    height: 30px;
+    width: 40vh;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    padding-top: 5px 0px 5px 0px;
+    border: 1px solid #2D9CB4;
+}
+
+.elementosRedefinir .email p{
+    margin-bottom: 7px;
+    font-size: 15px;
+}
+
+.elementosRedefinir button{
+    padding: 12px 100px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color:#2D9CB4;
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.elementosRedefinir .subtitulo {
+    margin-bottom: 30px;
+}
+
+.elementosRedefinir .btnEnviar_link:hover {
+    background-color: #1d7285;
+    cursor: pointer;
+    box-shadow: 1px 1px rgb(25, 193, 199);
+    transform: translateY(-2px);
+}
+
+.elementosRedefinir .voltarLogin:hover {
+    color: #1d7285;
+    cursor: pointer;
+}
+
+.elementosRedefinir .voltarLogin {
+    color: #2D9CB4;
+}
+
+/* Responsividade */
+
+@media (max-width: 480px) {
+    .elementosRedefinir h1{
+        margin-top: 100px;
+        font-size: 30px;
+        margin-bottom: -1px;
+        color: #2D9CB4;
+    }
+
+    .fundoRedefinir {
+        width: 100vh;
+        height: 100vh;
+    }
+
+    .fundoRedefinir .elementosRedefinir {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        height: auto;
+    }
+
+    .elementosRedefinir input {
+        width: 80vw;
+    }
+
+    .elementosRedefinir .subtitulo {
+        font-size: 14px;
+    }
+
+    .elementosRedefinir button {
+        font-size: 15px;
+    }
+}
+
