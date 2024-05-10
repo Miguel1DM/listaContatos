@@ -43,7 +43,7 @@ module.exports = {
 
     buscarUm: async (req, res) =>{
 
-         //Json padrao dessa API, ele tem tem os objetos 'error', para restornar os erros da API,
+        //Json padrao dessa API, ele tem tem os objetos 'error', para restornar os erros da API,
         //e o 'result', para retorna os resultados da API
         let json = {
             error:'', 
@@ -52,25 +52,35 @@ module.exports = {
         
         try{
 
-        
         let idUsuario = req.params.idUsuario;
         let idContato = req.body.idContato
 
         //Variável contatos, é igual ao retono da função 'buscarTodos' da pasta contatoServices
         //que é um SELECT
-        let contatos = await contatoServices.buscarUm(idUsuario, idContato);
+        let contato = await contatoServices.buscarUm(idUsuario, idContato);
 
         //Esse for percorre o a variável 'contatos' que passou a ter o valor da resposta do SELECT
-        for(let i in contatos){
-            json.result.push({
-                id: contatos[i].id,
-                nome: contatos[i].nome,
-                endereco: contatos[i].endereco,
-                email: contatos[i].email,
-                telefeone: contatos[i].telefone
-            });
-        }
 
+        if(contato.length === 0 ){
+
+            json.result.push({
+                teste:"esse contato não existe"
+            });
+
+        }else{
+
+            for(let i in contato){
+                json.result.push({
+                    id: contato[i].id,
+                    nome: contato[i].nome,
+                    endereco: contato[i].endereco,
+                    email: contato[i].email,
+                    telefeone: contato[i].telefone
+                });
+            }
+
+        }
+         
         //retornando a resposta da API
         res.json(json);
 
@@ -177,19 +187,33 @@ module.exports = {
         
         try{
 
-            let idContato = req.body.id;
-            let idUsuario = req.params.idUsuario;
+            let idContato = req.body.idContato;
+            let idUsuario = req.params.idUsuario;   
 
             if(idContato && idUsuario){
 
-                await contatoServices.excluir(idContato, idUsuario)
+                let contato = await contatoServices.buscarUm(idUsuario, idContato)
 
-                json.result.push({
+                if(contato.length === 0 ){
+
+                    json.result.push({
+                        teste:"esse contato não existe"
+                    });
+
+                }else{
+                    
+                    await contatoServices.excluir(idContato, idUsuario)
+
+                    json.result.push({
                     status: "Contato excluído com sucesso",
                     id: req.body.id
-                });
+                    });
 
-                res.json(json);
+                }
+            
+
+                res.json(json)
+
             }else{
                 json.error = 'Algum parâmetro enviado esta errado';
                 res.json(json);
@@ -200,3 +224,4 @@ module.exports = {
         }
     }
 }
+
