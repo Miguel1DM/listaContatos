@@ -41,6 +41,46 @@ module.exports = {
         }
     },
 
+    buscarUm: async (req, res) =>{
+
+         //Json padrao dessa API, ele tem tem os objetos 'error', para restornar os erros da API,
+        //e o 'result', para retorna os resultados da API
+        let json = {
+            error:'', 
+            result:[]
+        };
+        
+        try{
+
+        
+        let idUsuario = req.params.idUsuario;
+        let idContato = req.body.idContato
+
+        //Variável contatos, é igual ao retono da função 'buscarTodos' da pasta contatoServices
+        //que é um SELECT
+        let contatos = await contatoServices.buscarUm(idUsuario, idContato);
+
+        //Esse for percorre o a variável 'contatos' que passou a ter o valor da resposta do SELECT
+        for(let i in contatos){
+            json.result.push({
+                id: contatos[i].id,
+                nome: contatos[i].nome,
+                endereco: contatos[i].endereco,
+                email: contatos[i].email,
+                telefeone: contatos[i].telefone
+            });
+        }
+
+        //retornando a resposta da API
+        res.json(json);
+
+        }catch(error){
+
+            json.error = error;
+            res.json(json);
+        }
+    },
+
     inserir: async (req, res) =>{
 
         //Json padrao dessa API, ele tem tem os objetos 'error', para restornar os erros da API,
@@ -128,7 +168,7 @@ module.exports = {
 
     excluir: async (req, res) =>{
 
-        //Json padrao dessa API, ele tem tem os objetos 'error', para retornar os erros da API,
+        //Json padrao dessa API, ele tem tem os objetos 'error', para restornar os erros da API,
         //e o 'result', para retorna os resultados da API
         let json = {
             error:'',
