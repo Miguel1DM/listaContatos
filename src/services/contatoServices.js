@@ -13,6 +13,18 @@ module.exports = {
         })
         
     },
+
+    buscarUm: (idUsuario, idContato) =>{
+        return new Promise((aceito, rejeitado)=>{
+
+            db.query('SELECT * FROM contato WHERE idUsuario =? AND id=?', [idUsuario, idContato], (error, results)=>{
+                if(error) {rejeitado(error); return;}
+                aceito(results);
+                
+            })
+            
+        })
+    },
     
     inserir: (nome, endereco, telefone, email, idUsuario) =>{
         return new Promise((aceito, rejeitado)=>{
