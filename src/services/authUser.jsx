@@ -18,7 +18,7 @@ async function AuthLogin(email,senha){
 
     // Busca o email e senha do usuário na API
     window.alert("Realizando Login...");
-    const response = await axios.post(`${url}login`,data)
+    const response = await axios.post(`${url}/login`,data)
       if(response.status === 200){
         const statusLogin = response.data.result[0].statusLogin
         if(statusLogin){
