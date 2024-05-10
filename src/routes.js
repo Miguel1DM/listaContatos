@@ -7,7 +7,7 @@ const emailController = require('./controller/emailController');
 
 //Rotas para os Contatos
 router.get(`/contatos/:idUsuario`, usuarioController.validarToken, contatoController.buscarTodos);
-// router.get(`/umContato/:idUsuario`, usuarioController.validarToken, contatoController.buscarUm);
+router.get(`/umContato/:idUsuario`, usuarioController.validarToken, contatoController.buscarUm);
 router.post('/novoContato/:idUsuario', usuarioController.validarToken, contatoController.inserir);
 router.put('/alterarContato/:idUsuario', usuarioController.validarToken, contatoController.alterar);
 router.delete('/excluirContato/:idUsuario', usuarioController.validarToken, contatoController.excluir);
