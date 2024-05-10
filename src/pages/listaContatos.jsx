@@ -7,10 +7,7 @@ import axios from "axios";
 
 // Assets
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCirclePlus,
-  faList,
-} from "@fortawesome/free-solid-svg-icons";
+import {  faList } from "@fortawesome/free-solid-svg-icons";
 
 import FormData from '../Componentes/form/FormContato'
 
@@ -36,7 +33,7 @@ export default function ListaContatos(){
     setContatos(contatos)
   };   
 
-  useEffect(()=>{ getContatos() },[])
+  useEffect(()=>{ getContatos() })
 
   return (
     <div className="mx-2">
