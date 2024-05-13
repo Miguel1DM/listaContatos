@@ -55,22 +55,22 @@ export default function FormContato(){
       endereco: 'null'
     }
 
-    // Função que inseri contato
+    // Função que adiciona contato
     const postContato = async() => {
       document.getElementById("log").innerText = 'Inserindo contato...'
       try{
         const response = await axios.post(`${url}/novoContato/${userId}`, body, headers);
         const status = response.data.result.status;
-        if(status != "Adicionado com sucesso"){
-          document.getElementById("log").innerText = 'Contato não foi adicionado.'
-        }
+        console.log(status)
+        // if(status != "Adicionado com sucesso"){
+        //   document.getElementById("log").innerText = 'Contato não foi adicionado.'
+        // }
         document.getElementById("log").innerText = 'Contato Inserído com sucesso.'
       }catch(e){
         document.getElementById("log").innerText = 'Ocorreu um erro ao tentar adicionar um Contato.'
       }
     }
          
-
     postContato()
   }
 

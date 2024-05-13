@@ -17,34 +17,35 @@ import Contato from "../Componentes/contato/contato";
 export default function ListaContatos(){
   const [contatos, setContatos] = useState([]);
   
-  // Paramêtros para realizar requisições
-  const url = process.env.REACT_APP_API;
-  const token = localStorage.getItem("token");
-  const userId = GetId(token);
-  const headers  ={
-    headers: {
-      "bearer": `${token}`,
-    } }
+  useEffect(()=>{
+    // Paramêtros para realizar requisições
+    const url = process.env.REACT_APP_API;
+    const token = localStorage.getItem("token");
+    const userId = GetId(token);
+    const headers  ={
+      headers: {
+        "bearer": `${token}`,
+      } 
+    }
 
-  // Função que busca Contatos do Usuário
-  const getContatos = async() => {
-    const response = await axios.get(`${url}/contatos/${userId}`, headers);
-    const contatos = response.data.result
-    setContatos(contatos)
-  };   
-
-  useEffect(()=>{ getContatos() })
+    // Função que busca Contatos do Usuário
+    const getContatos = async() => {
+      const response = await axios.get(`${url}/contatos/${userId}`, headers);
+      const contatos = response.data.result
+      setContatos(contatos)
+    }; 
+    getContatos()
+   },[])
 
   return (
-    <div className="mx-2">
+    <div>
       <h2 className="text-center mt-3"><FontAwesomeIcon icon={faList} className="me-3" />Contact Post</h2>
-      <FormData />
-
-      <ul>
+      <FormData key="cadastro"/>
+      <div className="m-auto w-75">
       {contatos.map(contato => (
           <Contato id={contato.id} nome={contato.nome} telefone={contato.telefone} email={contato.email}/>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

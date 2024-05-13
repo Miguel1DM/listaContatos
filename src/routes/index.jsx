@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 // Importando Páginas
 import Login from '../pages/login'
 import ListaContatos from '../pages/listaContatos'
-import NovaSenha from '../pages/cadastro'
+// import NovaSenha from '../pages/cadastro'
 
 import PrivateRoute from '../routes/privateRoute.jsx'
 
