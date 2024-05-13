@@ -75,7 +75,7 @@ export default function FormContato(){
   }
 
 	return(
-		<form onSubmit={submit} className="formContact">
+		<form onSubmit={submit} className="formContact w-35">
         <div className="mb-3">
           <label className="form-label fw-medium fs-5">Nome</label>
           <input

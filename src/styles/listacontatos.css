@@ -16,3 +16,21 @@
     width: 50%;
     margin: auto;
 }
+
+.contato{
+    font-size: 18px;
+    font-weigth: bold;
+}
+
+
+.contato-info{
+    width: 70%;
+}
+
+.contato-info svg{
+    width: 10px;
+    heigth: 10px;
+}
+
+
+

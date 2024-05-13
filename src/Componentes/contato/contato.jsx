@@ -44,10 +44,21 @@ export default function Contato(props){
   }
 
   return(
-    <div key={props.id} className="w-75 p-3 rounded bg-primary-subtle mt-4 me-auto ms-auto d-flex align-items-center justify-content-between ">
-      <h5 className="fs-12 d-flex align-items-center"><FontAwesomeIcon icon={faUser} className="m-auto me-2"/>{props.nome}</h5>
-      <h5 className="fs-12 d-flex align-items-center"><FontAwesomeIcon icon={faPhone} className="m-auto me-2"/>{props.telefone}</h5>
-      <h5 className="fs-12 d-flex align-items-center"><FontAwesomeIcon icon={faEnvelope} className="m-auto me-2"/>{props.email}</h5>
+    <div key={props.id} className="contato w-90 mb-2 p-3 rounded bg-primary-subtle  d-flex align-items-center justify-content-between ">
+      <div className="contato-info w-90 d-flex flex-wrap align-items-center justify-content-around">
+        <div className="d-flex align-items-center mt-1 w-50">
+          <FontAwesomeIcon icon={faUser} className="m-auto"/>
+          {props.nome}
+        </div>
+        <div className="d-flex align-items-center mt-1 w-50">
+          <FontAwesomeIcon icon={faPhone} className="m-auto"/>
+          {props.telefone}
+        </div>
+        <div className="d-flex align-items-center mt-1 w-90 m-auto text-start">
+          <FontAwesomeIcon icon={faEnvelope} className="me-2"/>
+          {props.email}
+        </div>
+      </div>
       <button className="bg-transparent btn" onClick={()=>{removerUser()}} ><FontAwesomeIcon icon={faTrash} className="me-2"/></button>
     </div>
   )

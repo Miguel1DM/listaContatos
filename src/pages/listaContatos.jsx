@@ -5,13 +5,8 @@ import React, { useState, useEffect } from "react";
 import GetId from "../services/getId";
 import axios from "axios";
 
-// Assets
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {  faList } from "@fortawesome/free-solid-svg-icons";
-
-
 // Components
-import Navbar from '../Componentes/navbar/Navbar'
+import Navbar from '../Componentes/navbar/navbar'
 import FormData from '../Componentes/form/FormContato'
 import Contato from "../Componentes/contato/contato";
 
@@ -39,15 +34,15 @@ export default function ListaContatos(){
    },[])
 
   return (
-    <div>
+    <>
       <Navbar/>
-      <h2 className="text-center mt-3"><FontAwesomeIcon icon={faList} className="me-3" />Contact Post</h2>
       <FormData key="cadastro"/>
-      <div className="m-auto w-75">
-      {contatos.map(contato => (
-          <Contato id={contato.id} nome={contato.nome} telefone={contato.telefone} email={contato.email}/>
-        ))}
-      </div>
-    </div>
+      <main className="m-auto w-45">
+        {contatos && contatos.map(contato => (
+            <Contato id={contato.id} nome={contato.nome} telefone={contato.telefone} email={contato.email}/>
+          ))}
+      }
+      </main>
+    </>
   );
 }
