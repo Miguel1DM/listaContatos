@@ -9,9 +9,10 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  faList } from "@fortawesome/free-solid-svg-icons";
 
-import FormData from '../Componentes/form/FormContato'
 
 // Components
+import Navbar from '../Componentes/navbar/Navbar'
+import FormData from '../Componentes/form/FormContato'
 import Contato from "../Componentes/contato/contato";
 
 export default function ListaContatos(){
@@ -39,6 +40,7 @@ export default function ListaContatos(){
 
   return (
     <div>
+      <Navbar/>
       <h2 className="text-center mt-3"><FontAwesomeIcon icon={faList} className="me-3" />Contact Post</h2>
       <FormData key="cadastro"/>
       <div className="m-auto w-75">
