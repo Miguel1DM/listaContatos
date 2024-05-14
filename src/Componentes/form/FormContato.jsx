@@ -22,21 +22,10 @@ export default function FormContato(){
     setContato({ ...contato, email: event.target.value })
   }
 
-  // Função para limpar campos
-  // function limparCampos(){
-  //   const nome = document.getElementById("nome").innerText  ;
-  //   const telefone = document.getElementById("telefone").innerText  ;
-  //   const endereco = document.getElementById("endereco").innerText  ;
-  //   nome = "";
-  //   telefone = "";
-  //   endereco = "";
-  // }
-
   function submit(){
     // Validando campos vazios
     if(!contato.nome || !contato.telefone || !contato.email){
-      document.getElementById("log").innerText = 'Você não preencheu todos campos!!'
-      return
+      return document.getElementById("log").innerText = 'Você não preencheu todos campos!!'
     }
 
     // Parâmetros para requisição
@@ -60,12 +49,14 @@ export default function FormContato(){
       document.getElementById("log").innerText = 'Inserindo contato...'
       try{
         const response = await axios.post(`${url}/novoContato/${userId}`, body, headers);
-        const status = response.data.result.status;
-        console.log(status)
-        // if(status != "Adicionado com sucesso"){
-        //   document.getElementById("log").innerText = 'Contato não foi adicionado.'
-        // }
-        document.getElementById("log").innerText = 'Contato Inserído com sucesso.'
+        const status = response.data.result[0].status
+        if(status === "Adicionado com sucesso"){
+          document.getElementById("log").innerText = 'Contato Inserído com sucesso.'  
+          window.location.reload();
+        }else{
+          console.log(response)
+        }
+        
       }catch(e){
         document.getElementById("log").innerText = 'Ocorreu um erro ao tentar adicionar um Contato.'
       }

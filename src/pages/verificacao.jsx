@@ -1,7 +1,7 @@
 import React from 'react';
-import './verificacao.css';
+import '../styles/verificacao.css';
 
-function Verificar({goToSignIn}){
+function Verificacao(){
     return(
             <div className='fundoVerificar'>
 
@@ -13,7 +13,7 @@ function Verificar({goToSignIn}){
                         <input className='inputCodVerificacao' type='text'></input>
                     </div>
                     
-                    <button className='btnProsseguir' onClick={goToSignIn} >Prosseguir</button>
+                    <button className='btnProsseguir' >Prosseguir</button>
                     
                 </div>
 
@@ -22,4 +22,4 @@ function Verificar({goToSignIn}){
     );
 }
 
-export default Verificar;
+export default Verificacao;

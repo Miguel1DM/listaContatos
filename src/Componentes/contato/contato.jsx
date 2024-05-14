@@ -32,10 +32,17 @@ export default function Contato(props){
     }
 
     // Fazer requisiçao para remover Usuário pelo Id
-    window.alert("Excluíndo Contato...")
+    document.getElementById("log").innerText = `Excluíndo Contato ${props.nome}`
     try{
       const response = await axios.delete(`${url}/excluirContato/${userId}`, options)
-      if(response.data.result.status === "Contato excluído com sucesso"){ window.alert("Contato Excluído com Sucesso")}
+      const status = response.data.result[0].status
+      if(status === "Contato excluído com sucesso"){
+        document.getElementById("log").innerText = `Contato ${props.nome} Excluíndo`
+        window.location.reload();
+      }
+      else{
+        return document.getElementById("log").innerText = `Erro ao remover contato ${props.nome}`
+      }
     }catch(erro){
       console.log(`Erro ao excluir contato: ${erro}`)
     }
@@ -60,6 +67,7 @@ export default function Contato(props){
         </div>
       </div>
       <button className="bg-transparent btn" onClick={()=>{removerUser()}} ><FontAwesomeIcon icon={faTrash} className="me-2"/></button>
+      <p id="logContato"></p>
     </div>
   )
 }

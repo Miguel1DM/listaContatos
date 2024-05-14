@@ -1,16 +1,39 @@
 import '../styles/login.css';
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+// Módulos React
+import React, { useEffect } from 'react';
 
 // Importando Assets
 import imgLogin from '../img/imgLogin.png';
 
+// Importando Componentes e Funções
+import axios from 'axios';
 import AuthUser from '../services/authUser';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const navigate = useNavigate();
+
+  // Validando se existe Token de Login
+  useEffect(()=>{
+    const validateToken = async() => {
+      const url = process.env.REACT_APP_API;
+      const token = localStorage.getItem("token");
+      if(!token){return console.log("Token não encontrado")}
+      const header = {
+        headers: {
+          'bearer': `${token}`
+        }
+      }
+      const response = await axios.post(`${url}/validarToken`,{},header)
+      const status = response.data.status   
+      if(status === true){navigate("/listacontatos")}
+      else{return console.log("token inválido")}
+    }
+
+    validateToken() 
+  },[navigate])
 
   async function clickLogin(){
     const email = document.getElementById("inputEmail").value;

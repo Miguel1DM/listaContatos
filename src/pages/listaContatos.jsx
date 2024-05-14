@@ -39,9 +39,10 @@ export default function ListaContatos(){
       <FormData key="cadastro"/>
       <main className="m-auto w-45">
         {contatos && contatos.map(contato => (
-            <Contato id={contato.id} nome={contato.nome} telefone={contato.telefone} email={contato.email}/>
-          ))}
-      }
+              <Contato id={contato.id} nome={contato.nome} telefone={contato.telefeone} email={contato.email}/>
+            )
+          )
+        }
       </main>
     </>
   );
