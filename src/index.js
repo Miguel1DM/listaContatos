@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const api = express();
 const router = require('./routes');
 
-// Configurando o body-parser para lidar com requisições POST
 api.use(bodyParser.urlencoded({ extended: false }));
 api.use(express.json());
 
