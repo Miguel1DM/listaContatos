@@ -6,7 +6,7 @@ import GetId from "../services/getId";
 import axios from "axios";
 
 // Components
-import Navbar from '../Componentes/navbar/navbar'
+import Navbar from '../Componentes/navbar/Navbar'
 import FormData from '../Componentes/form/FormContato'
 import Contato from "../Componentes/contato/contato";
 

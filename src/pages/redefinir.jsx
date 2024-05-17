@@ -1,5 +1,5 @@
 import React from 'react';
-import './redefinir.css';
+import '../styles/redefinir.css';
 
 function Redefinir({goToSignIn, goToNovaSenha}){
     return(

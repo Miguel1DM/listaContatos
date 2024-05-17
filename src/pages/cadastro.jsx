@@ -8,7 +8,7 @@ import imgLogin from '../img/imgLogin.png';
 
 // Componentes e Funções
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Cadastrar({goToVerificar}){
     const navigate = useNavigate();
@@ -42,6 +42,7 @@ function Cadastrar({goToVerificar}){
             if(response.data.error === "Email ja cadastrado"){
                 return document.getElementById("log").innerText = "Email já cadastrado!!";
             }
+            localStorage.setItem("email",`${usuario.email}`)
             navigate("/verificacao")        
         }
 
@@ -86,6 +87,7 @@ function Cadastrar({goToVerificar}){
                     >
                     Cadastrar
                 </button>
+                <Link to="/verificacao">Verificar Código</Link>
             </div>
         </div>
     );
