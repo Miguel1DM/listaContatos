@@ -18,7 +18,8 @@ async function AuthLogin(email,senha){
 
     // Busca o email e senha do usuário na API
     window.alert("Realizando Login...");
-    const response = await axios.post(`${url}/login`,data)
+    try{
+      const response = await axios.post(`${url}/login`,data)
       if(response.status === 200){
         const statusLogin = response.data.result[0].statusLogin
         if(statusLogin){
@@ -27,13 +28,17 @@ async function AuthLogin(email,senha){
           localStorage.setItem("token",`${token}`)
           return true
         }else{
-          window.alert("Email ou Senha Incorretos!!")
+          document.getElementById("res").innerText = `Email ou senha Incorretoss`
           return <Navigate to="/"/>
         }
       }else{
-        window.alert("Erro ao buscar Usuário.")
+        document.getElementById("res").innerText = `Erro ao buscar usuário`
         return false
       }
+    }catch(err){
+      document.getElementById("res").innerText = `Erro ao realizar Login: ${err}`
+    }
+    
   }
 }
 

@@ -51,14 +51,14 @@ export default function Contato(props){
   }
 
   return(
-    <div key={props.id} className="contato w-90 mb-2 p-3 rounded bg-primary-subtle  d-flex align-items-center justify-content-between ">
-      <div className="contato-info w-90 d-flex flex-wrap align-items-center justify-content-around">
+    <div key={props.id} className="contato w-75 m-auto mb-2 p-3 rounded bg-primary-subtle d-flex align-items-center justify-content-between ml-1">
+      <div className="contato-info w-90 d-flex flex-wrap align-items-center justify-content-around m-auto">
         <div className="d-flex align-items-center mt-1 w-50">
-          <FontAwesomeIcon icon={faUser} className="m-auto"/>
+          <FontAwesomeIcon icon={faUser} className="me-2"/>
           {props.nome}
         </div>
         <div className="d-flex align-items-center mt-1 w-50">
-          <FontAwesomeIcon icon={faPhone} className="m-auto"/>
+          <FontAwesomeIcon icon={faPhone} className="me-2"/>
           {props.telefone}
         </div>
         <div className="d-flex align-items-center mt-1 w-90 m-auto text-start">

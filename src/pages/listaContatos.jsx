@@ -6,7 +6,7 @@ import GetId from "../services/getId";
 import axios from "axios";
 
 // Components
-import Navbar from '../Componentes/navbar/Navbar'
+import Navbar from '../Componentes/navbar/navbar'
 import FormData from '../Componentes/form/FormContato'
 import Contato from "../Componentes/contato/contato";
 
@@ -37,7 +37,7 @@ export default function ListaContatos(){
     <>
       <Navbar/>
       <FormData key="cadastro"/>
-      <main className="m-auto w-45">
+      <main className="m-3 w-50">
         {contatos && contatos.map(contato => (
               <Contato id={contato.id} nome={contato.nome} telefone={contato.telefeone} email={contato.email}/>
             )

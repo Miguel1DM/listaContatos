@@ -39,7 +39,7 @@ export default function Login() {
     const email = document.getElementById("inputEmail").value;
     const senha = document.getElementById("inputSenha").value;
 
-    if(await AuthUser(email,senha)){navigate("/listacontatos")}else{window.alert("Erro ao buscar Email e senha.")}
+    if(await AuthUser(email,senha)){navigate("/listacontatos")}
   }
 
   return (
@@ -59,7 +59,7 @@ export default function Login() {
           <p>Senha</p>
           <input id="inputSenha" className='inputSenha' type='password'></input>
         </div>
-        <p className='esquecerSenha'>Esqueceu a sua senha? <Link to="/novasenha" className='esquecerSenha_link'>Clique aqui</Link></p>
+        {/*<p className='esquecerSenha'>Esqueceu a sua senha? <Link to="/novasenha" className='esquecerSenha_link'>Clique aqui</Link></p>*/}
         <button onClick={clickLogin} className='btnLogin'>Login</button>
         <p id="res"></p>
         <p className='cliqueCadastrar'>Não tem uma conta? <Link to="/cadastro" className='cliqueCadastrar_link'>Cadastre-se agora</Link></p>

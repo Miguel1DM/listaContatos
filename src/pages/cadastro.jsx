@@ -1,7 +1,7 @@
 import '../styles/cadastro.css';
 
 // Módulos do React
-import React, { useState } from 'react';
+import React from 'react';
 
 // Assets
 import imgLogin from '../img/imgLogin.png';
@@ -87,7 +87,7 @@ function Cadastrar({goToVerificar}){
                     >
                     Cadastrar
                 </button>
-                <Link to="/verificacao">Verificar Código</Link>
+                <Link to="/verificacaoEmail">Verificar Código</Link>
             </div>
         </div>
     );
