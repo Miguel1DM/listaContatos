@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.telaLogin {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(160, 199, 209);
+}
+
+.telaLogin .fundoLogin {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    margin-left: 0 auto;
+    width: 32vw;
+    height: 100vh;
+    box-shadow: 1px 1px rgb(175, 180, 180);
+}
+
+.fundoLogin .elementosLogin {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.elementosLogin h1{
+    margin-top: 38px;
+    font-size: 38px;
+    margin-bottom: -1px;
+    color: #2D9CB4;
+}
+
+.elementosLogin input{
+    padding-left: 15px;
+    font-size: 15px;
+    height: 30px;
+    width: 40vh;
+    border-radius: 5px;
+    padding-top: 5px 0px 5px 0px;
+    border: 1px solid #2D9CB4;
+}
+
+.elementosLogin .senha p{
+    margin-bottom: 7px;
+    font-size: 15px;
+}
+
+.elementosLogin .email p{
+    margin-bottom: 7px;
+    font-size: 15px;
+}
+
+.elementosLogin button{
+    padding: 12px 100px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color:#2D9CB4;
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.elementosLogin .esquecerSenha {
+    margin-top: 40px;
+}
+
+.elementosLogin .subtitulo {
+    margin-bottom: 30px;
+}
+
+.elementosLogin .cliqueCadastrar {
+    margin-top: 30px;
+}
+
+.elementosLogin .btnLogin:hover {
+    background-color: #1d7285;
+    cursor: pointer;
+    box-shadow: 1px 1px rgb(25, 193, 199);
+    transform: translateY(-2px);
+
+}
+
+.elementosLogin .esquecerSenha_link {
+    color: #2D9CB4;
+}
+
+.elementosLogin .esquecerSenha_link:hover {
+    color: #1d7285;
+    cursor: pointer;
+}
+
+.elementosLogin .cliqueCadastrar_link {
+    color: #2D9CB4;
+}
+
+.elementosLogin .cliqueCadastrar_link:hover {
+    color: #1d7285;
+    cursor: pointer;
+
+}
