@@ -1,0 +1,250 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Dados das dicas
+const dicas = [
+    {"id": 1,
+     "dica": "Recicle papéis e jornais. O papel reciclado consome menos energia e reduz o desmatamento."},
+    {"id": 2,
+     "dica": "Separe o lixo em casa. Use lixeiras diferentes para recicláveis e não recicláveis."},
+    {"id": 3,
+     "dica": "Compre produtos com menos embalagens. Menos embalagem significa menos resíduo."},
+    {"id": 4,
+     "dica": "Utilize sacolas reutilizáveis em vez de sacolas plásticas descartáveis."},
+    {"id": 5,
+     "dica": "Doe roupas e objetos que não usa mais em vez de jogá-los fora."},
+    {"id": 6,
+     "dica": "Use baterias recarregáveis para reduzir o lixo eletrônico e os resíduos tóxicos."},
+    {"id": 7,
+     "dica": "Descarte eletrônicos em pontos de coleta apropriados, não no lixo comum."},
+    {"id": 8,
+     "dica": "Reutilize frascos e potes de vidro para armazenar alimentos ou como organizadores."},
+    {"id": 9,
+     "dica": "Reduza o uso de produtos descartáveis, como talheres e pratos plásticos."},
+    {"id": 10,
+     "dica": "Faça compostagem com restos de alimentos para reduzir resíduos e criar adubo natural."},
+    {"id": 11,
+     "dica": "Conserte objetos em vez de jogar fora e comprar novos. Pequenos reparos podem prolongar a vida útil."},
+    {"id": 12,
+     "dica": "Recicle pilhas e baterias em locais apropriados, pois podem conter substâncias tóxicas."},
+    {"id": 13,
+     "dica": "Ajuste o termostato da sua casa para economizar energia. Menos aquecimento ou resfriamento reduz o consumo."},
+    {"id": 14,
+     "dica": "Use lâmpadas LED, que são mais eficientes e duram mais do que as lâmpadas incandescentes."},
+    {"id": 15,
+     "dica": "Instale torneiras e chuveiros com economia de água para reduzir o consumo de água."},
+    {"id": 16,
+     "dica": "Escolha produtos com certificações ambientais, como o selo FSC para papel e madeira."},
+    {"id": 17,
+     "dica": "Leve sua própria garrafa de água reutilizável para reduzir o uso de garrafas plásticas."},
+    {"id": 18,
+     "dica": "Evite produtos com microesferas plásticas, que poluem os oceanos."},
+    {"id": 19,
+     "dica": "Use produtos de limpeza ecológicos e naturais para reduzir a poluição da água."},
+    {"id": 20,
+     "dica": "Prefira produtos a granel para reduzir a quantidade de embalagens."},
+    {"id": 21,
+     "dica": "Participe de campanhas de coleta de resíduos e apoio a projetos de reciclagem em sua comunidade."},
+    {"id": 22,
+     "dica": "Escolha roupas de empresas que utilizam materiais reciclados e práticas sustentáveis."},
+    {"id": 23,
+     "dica": "Recicle metais, como latas de alumínio e aço, pois podem ser reciclados infinitamente."},
+    {"id": 24,
+     "dica": "Evite o uso de produtos de papel descartáveis, como toalhas de papel e guardanapos."},
+    {"id": 25,
+     "dica": "Apoie empresas que adotam práticas de economia circular e reduzem desperdícios."},
+    {"id": 26,
+     "dica": "Troque lâmpadas incandescentes por lâmpadas de baixo consumo de energia."},
+    {"id": 27,
+     "dica": "Reduza o desperdício de alimentos planejando suas refeições e armazenando alimentos adequadamente."},
+    {"id": 28,
+     "dica": "Participe de programas de reciclagem em sua escola ou local de trabalho."},
+    {"id": 29,
+     "dica": "Utilize apps e sites para encontrar ecopontos e locais de descarte adequado de resíduos."},
+    {"id": 30,
+     "dica": "Eduque seus amigos e familiares sobre a importância da reciclagem e como fazê-la corretamente."},
+    {"id": 31,
+     "dica": "Invista em móveis e produtos duráveis e de boa qualidade para evitar a necessidade de substituições frequentes."},
+    {"id": 32,
+     "dica": "Recicle a sua eletricidade gerando energia solar ou eólica, se possível."},
+    {"id": 33,
+     "dica": "Use sacos de lixo compostáveis para resíduos orgânicos."},
+    {"id": 34,
+     "dica": "Evite produtos com muitos ingredientes químicos, que podem ser prejudiciais ao meio ambiente."},
+    {"id": 35,
+     "dica": "Recicle as cápsulas de café usadas em locais que aceitam esse tipo de resíduo."},
+    {"id": 36,
+     "dica": "Descarte corretamente medicamentos vencidos ou não utilizados em farmácias ou locais específicos para esse fim."},
+    {"id": 37,
+     "dica": "Evite a impressão desnecessária de documentos para economizar papel e tinta."},
+    {"id": 38,
+     "dica": "Faça a manutenção regular de seus aparelhos eletrônicos para prolongar sua vida útil."},
+    {"id": 39,
+     "dica": "Troque os produtos de limpeza comuns por alternativas naturais e menos prejudiciais ao meio ambiente."},
+    {"id": 40,
+     "dica": "Apoie empresas que utilizam práticas de produção sustentável e que tenham uma política de responsabilidade ambiental."},
+    {"id": 41,
+     "dica": "Promova a economia de água tomando banhos mais curtos e consertando vazamentos."},
+    {"id": 42,
+     "dica": "Utilize a bicicleta ou transporte público sempre que possível para reduzir a emissão de gases poluentes."},
+    {"id": 43,
+     "dica": "Evite produtos de higiene pessoal com microplásticos, como alguns esfoliantes."},
+    {"id": 44,
+     "dica": "Descarte o óleo de cozinha usado em locais apropriados para reciclagem."},
+    {"id": 45,
+     "dica": "Prefira produtos de empresas que adotam práticas de comércio justo e sustentável."},
+    {"id": 46,
+     "dica": "Recicle os seus eletrodomésticos antigos em locais especializados para garantir o descarte correto dos componentes."},
+    {"id": 47,
+     "dica": "Evite o uso de embalagens de espuma de poliestireno (isopor), que são difíceis de reciclar."},
+    {"id": 48,
+     "dica": "Use papel reciclado e evite o uso excessivo de papel quando puder optar por opções digitais."},
+    {"id": 49,
+     "dica": "Plante árvores e participe de programas de reflorestamento para ajudar a combater o desmatamento."},
+    {"id": 50,
+     "dica": "Faça uso de tecnologia para monitorar e reduzir seu consumo de energia em casa."},
+    {"id": 51,
+     "dica": "Apoie iniciativas locais de limpeza de praias, parques e áreas públicas."},
+    {"id": 52,
+     "dica": "Escolha produtos que podem ser reciclados ou compostados após o uso."},
+    {"id": 53,
+     "dica": "Considere a compra de produtos usados ou recondicionados para reduzir a demanda por novos produtos."},
+    {"id": 54,
+     "dica": "Use menos produtos de limpeza descartáveis e opte por panos de limpeza reutilizáveis."},
+    {"id": 55,
+     "dica": "Reduza o consumo de carne para diminuir a pegada de carbono associada à produção de alimentos."},
+    {"id": 56,
+     "dica": "Compre alimentos em mercados locais para reduzir a pegada de carbono associada ao transporte."},
+    {"id": 57,
+     "dica": "Compre alimentos em mercados locais para reduzir a pegada de carbono associada ao transporte."},
+    {"id": 58,
+     "dica": "Evite produtos com embalagens de vidro para reduzir o desperdício e o consumo de recursos naturais."},
+    {"id": 58,
+     "dica": "Evite produtos com embalagens de vidro para reduzir o desperdício e o consumo de recursos naturais."},
+    {"id": 59,
+     "dica": "Participe de programas de troca de roupas e acessórios em sua comunidade."},
+    {"id": 60,
+     "dica": "Utilize produtos de limpeza concentrados para reduzir o uso de embalagens."},
+    {"id": 61,
+     "dica": "Apoie e participe de eventos de troca de sementes e cultivo comunitário."},
+    {"id": 62,
+     "dica": "Escolha materiais recicláveis ou biodegradáveis ao comprar novos produtos."},
+    {"id": 63,
+     "dica": "Descarte corretamente o lixo eletrônico em locais apropriados para evitar poluição e contaminação."},
+    {"id": 64,
+     "dica": "Reduza o uso de produtos descartáveis em festas e eventos, optando por itens reutilizáveis."},
+    {"id": 65,
+     "dica": "Incentive a sua escola ou empresa a adotar políticas de redução e reciclagem de resíduos."},
+    {"id": 66,
+     "dica": "Faça uso de aplicativos e plataformas online para monitorar e reduzir seu impacto ambiental."},
+    {"id": 67,
+     "dica": "Conserte e restaure móveis antigos em vez de comprar novos."},
+    {"id": 68,
+     "dica": "Recicle vidro, que pode ser derretido e moldado infinitamente sem perda de qualidade."},
+    {"id": 69,
+     "dica": "Utilize energia solar para aquecimento de água em sua casa."},
+    {"id": 70,
+     "dica": "Compre produtos duráveis e de qualidade que não precisem ser substituídos frequentemente."},
+    {"id": 71,
+     "dica": "Apoie empresas que trabalham com práticas de produção de baixo impacto ambiental."},
+    {"id": 72,
+     "dica": "Considere a instalação de sistemas de captação de água da chuva para reutilizar água em casa."},
+    {"id": 73,
+     "dica": "Evite produtos com produtos químicos tóxicos e opte por alternativas naturais."},
+    {"id": 74,
+     "dica": "Faça doações de alimentos e itens não utilizados para instituições de caridade."},
+    {"id": 75,
+     "dica": "Aproveite a luz natural sempre que possível, reduzindo a necessidade de iluminação artificial."},
+    {"id": 76,
+     "dica": "Crie uma horta em casa para cultivar seus próprios vegetais e reduzir a necessidade de embalagens de supermercado."},
+    {"id": 77,
+     "dica": "Utilize resíduos orgânicos para adubar suas plantas, criando um ciclo de nutrientes."},
+    {"id": 78,
+     "dica": "Participe de projetos de limpeza comunitária para melhorar o meio ambiente ao seu redor."},
+    {"id": 79,
+     "dica": "Descarte pneus usados em pontos de coleta apropriados para reciclagem."},
+    {"id": 80,
+     "dica": "Recicle roupas e tecidos antigos transformando-os em novos itens ou acessórios."},
+    {"id": 81,
+     "dica": "Escolha móveis feitos de materiais reciclados ou de fontes sustentáveis."},
+    {"id": 82,
+     "dica": "Reduza o desperdício de alimentos planejando suas refeições e armazenando alimentos corretamente."},
+    {"id": 83,
+     "dica": "Utilize produtos de cuidados pessoais que são recicláveis ou reutilizáveis, como fraldas de pano."},
+    {"id": 84,
+     "dica": "Conserte rachaduras e vazamentos em casa para evitar desperdício de água e energia."},
+    {"id": 85,
+     "dica": "Escolha transporte compartilhado ou carona para reduzir o número de veículos nas ruas."},
+    {"id": 86,
+     "dica": "Participe de grupos e fóruns online dedicados à reciclagem e práticas sustentáveis."},
+    {"id": 87,
+     "dica": "Utilize materiais reciclados para projetos de arte e bricolagem."},
+    {"id": 88,
+     "dica": "Evite comprar produtos de marcas que utilizam práticas prejudiciais ao meio ambiente."},
+    {"id": 89,
+     "dica": "Instale sensores de movimento para iluminação em áreas menos usadas para economizar energia."},
+    {"id": 90,
+     "dica": "Utilize aplicativos de medição de consumo para monitorar e reduzir seu uso de energia."},
+    {"id": 91,
+     "dica": "Apoie empresas que adotam a política de zero desperdício em seus processos produtivos."},
+    {"id": 92,
+     "dica": "Incentive o uso de transporte elétrico ou híbrido para reduzir a emissão de gases poluentes."},
+    {"id": 93,
+     "dica": "Participar de eventos educativos sobre reciclagem e sustentabilidade para aumentar a conscientização."},
+    {"id": 94,
+     "dica": "Descarte óleos de cozinha usados em locais especializados para evitar poluição dos recursos hídricos."},
+    {"id": 95,
+     "dica": "Utilize sistemas de aquecimento e refrigeração eficientes para reduzir o consumo de energia."},
+    {"id": 96,
+     "dica": "Apoie e participe de programas de certificação ambiental para produtos e empresas."},
+    {"id": 97,
+     "dica": "Evite o uso de produtos químicos agressivos na jardinagem, optando por alternativas naturais."},
+    {"id": 98,
+     "dica": "Repare e recicle roupas e acessórios em vez de descartá-los."},
+    {"id": 99, 
+    "dica": "Crie e use compostos de resíduos orgânicos para reduzir a quantidade de lixo que vai para aterros."},
+    {"id": 100,
+     "dica": "Promova e participe de feiras e eventos de sustentabilidade para aprender mais e inspirar outros."}
+];
+
+// Configurar o middleware para permitir o parsing de JSON
+app.use(express.json());
+
+// Rota para obter todas as dicas
+app.get('/dicas', (req, res) => {
+    res.json(dicas);
+});
+
+// Rota para obter uma dica específica pelo ID
+app.get('/dicas/:id', (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const dica = dicas.find(d => d.id === id);
+    if (dica) {
+        res.json(dica);
+    } else {
+        res.status(404).json({ message: 'Dica não encontrada' });
+    }
+});
+
+let dicaDoDiaCache = null;
+let cacheDate = null;
+
+app.get('/dica-diaria', (req, res) => {
+    const today = new Date();
+    const startOfYear = new Date(Date.UTC(today.getUTCFullYear(), 0, 1));
+    const dayOfYear = Math.floor((today - startOfYear) / 86400000);
+
+    // Atualizar o cache se for um novo dia
+    if (cacheDate !== dayOfYear) {
+        cacheDate = dayOfYear;
+        dicaDoDiaCache = dicas[dayOfYear % dicas.length];
+    }
+
+    res.json(dicaDoDiaCache);
+});
+
+// Iniciar o servidor
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
+});
